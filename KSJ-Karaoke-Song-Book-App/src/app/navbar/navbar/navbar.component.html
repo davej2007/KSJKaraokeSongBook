@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span (click)='openSelectParty()'>KSJ</span>
+    <span class="spacer"></span>
+    <h1>{{ message }}</h1>
+    <a routerLink="/songMaster"><mat-icon class="icon">security</mat-icon></a>
+  </mat-toolbar-row>
+</mat-toolbar>
+<br>
+<br>
+<p>
+  <Strong>Result : {{ dialogResult.surname }}</Strong>
+  - {{ dialogResult.date }}
+  - {{ dialogResult.type }}
+</p>

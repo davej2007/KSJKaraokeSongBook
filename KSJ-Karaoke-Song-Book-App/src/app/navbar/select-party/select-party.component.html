@@ -1,0 +1,34 @@
+<div>
+  <h1 mat-dialog-title>
+    Welcome To KSJ Entertainment Karaoke Song Book
+    {{ data.surname }}
+  </h1>
+  <mat-dialog-content >
+    <h1>
+      <mat-form-field>
+        <input type='text' matInput placeholder="Surname" id='surname' [(ngModel)]='data.surname' name='surname'>
+      </mat-form-field>
+    </h1>
+    <h2>
+      <mat-form-field>
+        <input type='date' matInput placeholder="Event Date" id='date' [(ngModel)]='data.date' name='date'>
+      </mat-form-field>
+    </h2>
+    <h2>
+      <mat-form-field>
+        <mat-select [(ngModel)]="data.type" name='type' placeholder='Event Description'>
+          <mat-option>None</mat-option>
+          <mat-option value="party">Party</mat-option>
+          <mat-option value="birthday">Birthday</mat-option>
+          <mat-option value="wedding">Wedding</mat-option>
+          <mat-option value="other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </h2>
+    <h1>error message :{{ data.error }}</h1>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="onCloseCancel()">No Thanks</button>
+    <button mat-raised-button color="primary" (click)="onCloseConfirm()">Select</button>  
+  </mat-dialog-actions>
+</div>

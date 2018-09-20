@@ -26,17 +26,17 @@ mongoose.connect(config.uri, (err) => {
     }
 });
 // Middleware 
-app.use(cors());
+app.use(cors({origin: 'http://localhost:4200'}));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 // Router routes
 app.use('/api/party', partyRoute);
 app.use('/api/song', songRoute);
 // Main routes
 app.get('*', (req, res) => {
-    res.send('<h1>Server Running ..... </h1>');
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 // start server
 app.listen(PORT, () => {
