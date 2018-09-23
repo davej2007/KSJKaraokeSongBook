@@ -1,0 +1,22 @@
+<div>
+  <h1 mat-dialog-title>
+    KSJ Admin Login Page
+  </h1>
+  <mat-dialog-content >
+    <h1>
+      <mat-form-field>
+        <input type='text' matInput placeholder="User Name" id='username' [(ngModel)]='data.username' name='username'>
+      </mat-form-field>
+    </h1>
+    <h2>
+      <mat-form-field>
+        <input type='text' matInput placeholder="Pass Word" id='password' [(ngModel)]='data.password' name='password'>
+      </mat-form-field>
+    </h2>
+    <h4>{{ data.error }}</h4>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onCloseCancel()">Log Out</button>
+    <button mat-raised-button color="primary" (click)="onCloseConfirm()">Log In</button>  
+  </mat-dialog-actions>
+</div>

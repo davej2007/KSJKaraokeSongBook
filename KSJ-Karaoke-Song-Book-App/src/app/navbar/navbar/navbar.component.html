@@ -1,15 +1,9 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span (click)='openSelectParty()'>KSJ</span>
+    <span (click)='openSelectParty()' class='ksj'>K S J</span>
     <span class="spacer"></span>
-    <h1>{{ message }}</h1>
-    <a routerLink="/songMaster"><mat-icon class="icon">security</mat-icon></a>
+    <h1></h1>
+    <h1 routerLink="/songSearch">{{ partyTitle }}</h1>
+    <span (click)='openLogIn()'><mat-icon class="icon">security</mat-icon></span>
   </mat-toolbar-row>
 </mat-toolbar>
-<br>
-<br>
-<p>
-  <Strong>Result : {{ dialogResult.surname }}</Strong>
-  - {{ dialogResult.date }}
-  - {{ dialogResult.type }}
-</p>

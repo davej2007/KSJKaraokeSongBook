@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PartyService } from '../../services/party.service';
 
 @Component({
   selector: 'app-select-party',
@@ -8,24 +9,30 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class SelectPartyComponent implements OnInit {
 
-  data : {};
-  error : String;
+  data : { id:string, surname:string, date:string, type:string, error:string};
 
   constructor(
+    private _party:PartyService,
     private  dialogRef : MatDialogRef<SelectPartyComponent>, @Inject(MAT_DIALOG_DATA) data){
       this.data = data
     }
   
    ngOnInit(){
-     
    }
    
    onCloseConfirm(){
-     console.log('save Button Pressed');
-     this.dialogRef.close(this.data);
+    this._party.selectParty(this.data).subscribe(
+      res => this.dialogRef.close(res._id),
+      err => {
+        if (err.status===401){
+          this.data.error = err.error;
+        } else {
+          this.data.error = "Error : Please Make Another Selection.";
+        }
+      }
+    )    
    }
    onCloseCancel(){
-    console.log('Cancel Button Pressed');
     this.dialogRef.close('false');
    }
 }

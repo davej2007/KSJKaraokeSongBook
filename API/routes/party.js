@@ -28,7 +28,7 @@ router.post('/selectParty', (req,res)=>{
     } else if(req.body.date == '' || req.body.date == undefined){
         res.status(401).send('Error : Please enter a Date');
     } else if(req.body.type == '' || req.body.type == undefined){
-        res.status(401).send('Error : Please enter a Party Type');
+        res.status(401).send('Error : Please enter a Party Description');
     } else {
         Party.findOne({surname:req.body.surname.toLowerCase()})
             .select('_id surname title date type christmas')
@@ -39,10 +39,9 @@ router.post('/selectParty', (req,res)=>{
                     res.status(401).send('Error : Surname Not Found.');
                 } else {
                     if(foundParty.date != req.body.date){
-                        console.log('found date :', foundParty.date,'Entered Date :', req.body.date);
                         res.status(401).send('Error : Date Does not Match.');
                     } else if (foundParty.type != req.body.type) {
-                        res.status(401).send('Error : Type Does not Match.');
+                        res.status(401).send('Error : Description Does not Match.');
                     } else {
                     res.status(200).json({_id:foundParty._id});
                     }
@@ -51,7 +50,7 @@ router.post('/selectParty', (req,res)=>{
     }
 })
 
-router.get('/partyDetails/:id', (req,res)=>{
+router.get('/detailParty/:id', (req,res)=>{
     Party.findById(req.params.id).select('_id title christmas').exec(function (err, partyDetails) {
         if (err) {
             res.status(401).send('DB error'+err);
@@ -60,7 +59,5 @@ router.get('/partyDetails/:id', (req,res)=>{
         }
     });
 });
-
-
 
 module.exports = router;

@@ -1,7 +1,6 @@
 <div>
   <h1 mat-dialog-title>
-    Welcome To KSJ Entertainment Karaoke Song Book
-    {{ data.surname }}
+    Welcome To KSJ Karaoke Song Book
   </h1>
   <mat-dialog-content >
     <h1>
@@ -25,10 +24,10 @@
         </mat-select>
       </mat-form-field>
     </h2>
-    <h1>error message :{{ data.error }}</h1>
+    <h1>{{ data.error }}</h1>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button (click)="onCloseCancel()">No Thanks</button>
+    <button mat-raised-button color="primary" (click)="onCloseCancel()">No Thanks</button>
     <button mat-raised-button color="primary" (click)="onCloseConfirm()">Select</button>  
   </mat-dialog-actions>
 </div>
